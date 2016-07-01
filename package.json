@@ -1,0 +1,23 @@
+{
+  "name": "spell-correct",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run check",
+    "check": "node src/console.js",
+    "test": "mocha test/test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "express": "^4.13.4",
+    "fs": "0.0.2"
+  },
+  "dependencies": {
+    "event-stream": "^3.3.3",
+    "underscore.string": "^3.3.4"
+  }
+}
