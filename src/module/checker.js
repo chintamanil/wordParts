@@ -13,6 +13,7 @@ var Validate = require('./../methods/validate.js');
 module.exports = (function() {
     var _dictonaries, _private;
     _dictonaries = {};
+    var filePath = './../dict/words_for_problem.txt';
 
     // by defaul its creating a dictionary for 'trie' based on input file.
     _dictonaries.trie = new Trie();
@@ -21,13 +22,12 @@ module.exports = (function() {
     _private = {
         find: function(word, dictType) {
             dictType = dictType || 'trie';
-            if (_dictonaries[dictType].find(word)) {
-                return word;
-            } // add else loop TODO ?
+            return _dictonaries[dictType].find(word);
         },
 
         build: function(dictFile, dictType) {
             dictType = dictType || 'trie';
+            dictFile = dictFile || filePath;
             // check if dictionary was already built. If so return that one. or add to that TODO
             _dictonaries[dictType].build(dictFile);
         },
@@ -35,7 +35,18 @@ module.exports = (function() {
         add: function(word, dictType) {
             // TODO check typeof word and dictType
             dictType = dictType || 'trie';
-            _dictonaries[dictType].add(word);
+            return _dictonaries[dictType].add(word);
+        },
+
+        addSeries: function(str, dictType) {
+            // TODO check typeof word and dictType
+            dictType = dictType || 'trie';
+            return _dictonaries[dictType].addSeries(str);
+        },
+
+        traverse: function(dictType) {
+            dictType = dictType || 'trie';
+            return Validate.traverse(_dictonaries[dictType]);
         }
 
     };
@@ -43,7 +54,9 @@ module.exports = (function() {
     return {
         build: _private.build,
         find: _private.find,
-        add: _private.add
+        add: _private.add,
+        addSeries: _private.addSeries,
+        traverse: _private.traverse
     };
 
 })();

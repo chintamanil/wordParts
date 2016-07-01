@@ -111,30 +111,38 @@
      *
      * @return {[type]}      [description]
      */
-    Trie.prototype._build = function(file, callback) {
+    Trie.prototype._build = function(file) {
         var cur;
         cur = this.trie;
 
         var instream = fs.createReadStream(file);
         var outstream = new stream;
         var rl = readline.createInterface(instream, outstream);
-        var self = this
+        var self = this;
         rl.on('line', function(line) {
-            console.log(line)
-            self._add(line, cur);
-        }).on('close', function(line) {
+            // console.log(line)
+
+        }).on('close', function() {
 
         });
 
+        var contents = fs.readFileSync(file, 'utf8').split('\n');
+       // console.log(contents.split(''));
+       for (var i = 0; i < contents.length; i++) {
+            // console.log(contents[i])
+            self._add(contents[i].replace('\r', ''), cur);
+       };
+
+        contents = null;
         return true;
     };
 
-    // module.exports = Trie;
-     function cb(){
-            console.log('Tata')
-        }
-    var filePath = '../dict/sample_words.txt';
-    var trie = new Trie();
-    trie.build(filePath, cb)
+    module.exports = Trie;
+    //  function cb(){
+    //         console.log('Tata')
+    //     }
+    // var filePath = '../dict/sample_words.txt';
+    // var trie = new Trie();
+    // trie.build(filePath, cb)
 
 })();

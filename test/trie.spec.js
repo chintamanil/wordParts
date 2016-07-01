@@ -17,21 +17,18 @@
         });
 
         it('Add words to trie', function() {
-            expect(trie.add('apple')).to.equal(true);
-            expect(trie.addSeries('apple applepie add after')).to.equal(true);
-            expect(trie.find('apple')).to.equal(true);
+            expect(trie.addSeries('a apple applepie add after bit bitten')).to.equal(true);
+            expect(trie.add('bite')).to.equal(true);
+            expect(trie.find('bite')).to.equal(true);
             expect(trie.find('ed')).to.equal(null);
             expect(trie.find('applepie')).to.equal(true);
+            // console.log(Object.keys(trie.toObject()['a']), JSON.stringify(trie.toObject()['a']));
         });
 
-        it.only('Add words to trie with file', function() {
-
+        it('Add words to trie with file', function() {
             trie.build(filePath);
-            // expect(trie.find('abreacting')).to.equal(true);
-            // console.log(trie.toObject(), Object.keys(trie.toObject()['a']) , trie.find('abreacting'))
+            expect(trie.find('aah')).to.equal(true);
         });
     });
-
-
 
 })();
