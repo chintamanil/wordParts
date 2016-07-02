@@ -38,9 +38,9 @@ module.exports = (function() {
             var wholeWord = [];
 
             traversal(trieInstance.toObject());
-            console.log(counted);
-            console.log(firstLongest, secondLongest);
-            console.log(count);
+            // console.log(counted);
+            // console.log(firstLongest, secondLongest);
+            // console.log(count);
             return {
                 count: count,
                 counted: counted,

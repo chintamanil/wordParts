@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "event-stream": "^3.3.3",
+    "prompt": "^1.0.0",
     "underscore.string": "^3.3.4"
   }
 }
