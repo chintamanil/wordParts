@@ -16,12 +16,12 @@
             expect(trie.find('bite')).to.equal(null);
         });
 
-        it('Add words to trie', function() {
-            expect(trie.addSeries('a apple applepie add after bit bitten')).to.equal(true);
-            expect(trie.add('bite')).to.equal(true);
-            expect(trie.find('bite')).to.equal(true);
+        it.skip('Add words to trie', function() {
+            expect(trie.addSeries('ass assist assatepit ate bit bittens bittenpitted bittenpitteds bittter pie pit pitteds ted ten')).to.equal(true);
+            expect(trie.add('bit')).to.equal(true);
+            expect(trie.find('ted')).to.equal(true);
             expect(trie.find('ed')).to.equal(null);
-            expect(trie.find('applepie')).to.equal(true);
+            expect(trie.find('bittenpitted')).to.equal(true);
             // console.log(Object.keys(trie.toObject()['a']), JSON.stringify(trie.toObject()['a']));
         });
 
