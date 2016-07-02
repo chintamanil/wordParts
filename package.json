@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run check",
     "check": "node src/console.js",
-    "test": "mocha test/test.js"
+    "test": "mocha test/*.spec.js"
   },
   "author": "",
   "license": "ISC",

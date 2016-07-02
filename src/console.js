@@ -1,7 +1,7 @@
 (function() {
 
     var Checker = require('./module/checker.js');
-    var file = './dict/words_for_problem.txt';
+    var file = './src/dict/words_for_problem.txt';
 
     Checker.build(file);
     var res = Checker.traverse();

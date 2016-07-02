@@ -3,10 +3,10 @@
     var chai = require('chai');
     var expect = chai.expect;
     var Trie = require('./../src/module/trie.js');
-    var filePath = './../src/dict/sample_words.txt';
+    var filePath = './src/dict/sample_words.txt';
     var trie = new Trie();
 
-    describe('Spell Checker Testing', function() {
+    describe('Tie DS Testing', function() {
 
         beforeEach(function() {});
 
@@ -16,13 +16,12 @@
             expect(trie.find('bite')).to.equal(null);
         });
 
-        it.skip('Add words to trie', function() {
+        it('Add words to trie', function() {
             expect(trie.addSeries('ass assist assatepit ate bit bittens bittenpitted bittenpitteds bittter pie pit pitteds ted ten')).to.equal(true);
             expect(trie.add('bit')).to.equal(true);
             expect(trie.find('ted')).to.equal(true);
             expect(trie.find('ed')).to.equal(null);
             expect(trie.find('bittenpitted')).to.equal(true);
-            // console.log(Object.keys(trie.toObject()['a']), JSON.stringify(trie.toObject()['a']));
         });
 
         it('Add words to trie with file', function() {
