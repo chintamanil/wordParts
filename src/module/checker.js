@@ -4,18 +4,16 @@ var Validate = require('./../methods/validate.js');
 // TODO use try catch here
 
 /**
- * Function provides a Facade to the Validate method for spell checking.
- *  First it checks it input string is in dictionary if not then it asks the Validate method to check
- *  if it can do spelling correction
- *
- * @return {[type]}        [description]
+ * [Facde Pattern to expose highlevel methods]
+ * Exposes trie methods to high level calling function
  */
 module.exports = (function() {
     var _dictonaries, _private;
     _dictonaries = {};
     var filePath = './../dict/words_for_problem.txt';
 
-    // by defaul its creating a dictionary for 'trie' based on input file.
+    // Can create a new Instance with new data structure
+    //  e.g _dictonaries.dawg = new DAWG()
     _dictonaries.trie = new Trie();
 
     // private methods
@@ -28,18 +26,15 @@ module.exports = (function() {
         build: function(dictFile, dictType) {
             dictType = dictType || 'trie';
             dictFile = dictFile || filePath;
-            // check if dictionary was already built. If so return that one. or add to that TODO
             _dictonaries[dictType].build(dictFile);
         },
 
         add: function(word, dictType) {
-            // TODO check typeof word and dictType
             dictType = dictType || 'trie';
             return _dictonaries[dictType].add(word);
         },
 
         addSeries: function(str, dictType) {
-            // TODO check typeof word and dictType
             dictType = dictType || 'trie';
             return _dictonaries[dictType].addSeries(str);
         },
@@ -48,7 +43,6 @@ module.exports = (function() {
             dictType = dictType || 'trie';
             return Validate.traverse(_dictonaries[dictType]);
         }
-
     };
 
     return {

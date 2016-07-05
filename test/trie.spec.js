@@ -5,6 +5,7 @@
     var Trie = require('./../src/module/trie.js');
     var filePath = './src/dict/sample_words.txt';
     var trie = new Trie();
+  var wordSeries = 'aa ab as er ers ass at he is tic atheistic aardwolf aa assist assatepit ate bit bitten bittenpit bittenpitted bittter pie pit pitted pitteds ted ten wolf zit zitis zymosan zymosans';
 
     describe('Tie DS Testing', function() {
 
@@ -17,10 +18,10 @@
         });
 
         it('Add words to trie', function() {
-            expect(trie.addSeries('ass assist assatepit ate bit bittens bittenpitted bittenpitteds bittter pie pit pitteds ted ten')).to.equal(true);
-            expect(trie.add('bit')).to.equal(true);
-            expect(trie.find('ted')).to.equal(true);
-            expect(trie.find('ed')).to.equal(null);
+            expect(trie.addSeries(wordSeries)).to.equal(true);
+            expect(trie.add('zitis')).to.equal(true);
+            expect(trie.find('aardwolf')).to.equal(true);
+            expect(trie.find('aa')).to.equal(true);
             expect(trie.find('bittenpitted')).to.equal(true);
         });
 

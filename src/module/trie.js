@@ -82,10 +82,10 @@
     };
 
     /**
-     * [_find description]
+     * [_find private method to find word in trie]
      *
-     * @param  {[type]} word [description]
-     * @param  {[type]} trie [description]
+     * @param  {[type]} word [word to find]
+     * @param  {[type]} trie [trie Instance]
      *
      * @return {[type]}      [description]
      */
@@ -105,11 +105,11 @@
     };
 
     /**
-     * [_build description]
+     * [_build builds trie from file]
      *
-     * @param  {[type]} file [description]
+     * @param  {[type]} file [file to build from]
      *
-     * @return {[type]}      [description]
+     * @return {[boolean]}      [true if built]
      */
     Trie.prototype._build = function(file) {
         var cur;
@@ -119,6 +119,7 @@
         var outstream = new stream;
         var rl = readline.createInterface(instream, outstream);
         var self = this;
+        // aync method to read file
         rl.on('line', function(line) {
             // console.log(line)
 
@@ -126,23 +127,16 @@
 
         });
 
+        // Sync method to add words to file.
         var contents = fs.readFileSync(file, 'utf8').split('\n');
-       // console.log(contents.split(''));
-       for (var i = 0; i < contents.length; i++) {
+        // console.log(contents.split(''));
+        for (var i = 0; i < contents.length; i++) {
             // console.log(contents[i])
             self._add(contents[i].replace('\r', ''), cur);
-       };
-
+        };
         contents = null;
         return true;
     };
 
     module.exports = Trie;
-    //  function cb(){
-    //         console.log('Tata')
-    //     }
-    // var filePath = '../dict/sample_words.txt';
-    // var trie = new Trie();
-    // trie.build(filePath, cb)
-
 })();
