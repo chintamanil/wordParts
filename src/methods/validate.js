@@ -65,7 +65,6 @@ module.exports = (function() {
              *  else find previous + word in recursive function that gives sub words.
              *   else find previous + word in trie
              */
-
             if (cache[prevPlusWord]) {
                 return cache[prevPlusWord];
             }
@@ -97,8 +96,14 @@ module.exports = (function() {
          * @return {[type]}              [first longest , secondLongest & total Count of words that have sub words]
          */
         traverse: function(trieInstance) {
-            var firstLongest = { word: '', len: 0 };
-            var secondLongest = { word: '', len: 0 };
+            var firstLongest = {
+                word: '',
+                len: 0
+            };
+            var secondLongest = {
+                word: '',
+                len: 0
+            };
             var depth = 0;
             //  wholeWord = entire word from base of trie
             //  currentWord = word from where '$' was last found
@@ -123,11 +128,12 @@ module.exports = (function() {
                 secondLongest: secondLongest
             };
 
+
             function traversal(current, parts, basePart) {
                 var currentKeys = Object.keys(current);
                 var len = currentKeys.length;
                 var i, letter, incremented = false,
-                    incrDepth = false;
+                incrDepth = false;
                 var incrCount = 0;
                 var numOfParts = parts || 1;
                 var base = basePart || [];
@@ -146,7 +152,7 @@ module.exports = (function() {
                         }
                         previousWord = wholeWord.slice(wordParts.join('').length, wholeWord.length - currentWord.length);
                         if (depth > 0 && !previousWord.length) {
-                            // previousWord = wordParts[wordParts.length - 1].split('')
+                        // previousWord = wordParts[wordParts.length - 1].split('')
                         }
 
                         incrCount = _private.findWord(currentWord.join(''), previousWord.join(''), trieInstance, depth);
@@ -201,6 +207,7 @@ module.exports = (function() {
         }
     };
 
+    // return object
     return {
         traverse: _private.traverse
     };

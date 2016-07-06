@@ -6,6 +6,7 @@ api/config/snapshots
 # Logs
 logs
 *.log
+save.txt
 npm-debug.log
 dump.rdb
 test/*.txt
